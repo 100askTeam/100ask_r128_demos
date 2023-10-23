@@ -1,0 +1,14 @@
+menuconfig USE_100ASK_MODULE_DRIVER_IR_RECEIVER
+	bool "USE USE_100ASK_MODULE_DRIVER_IR_RECEIVER"
+	default n
+
+if USE_100ASK_MODULE_DRIVER_IR_RECEIVER
+
+	config 100ASK_MODULE_DRIVER_IR_RECEIVER_BUFFER
+			int "Infrared Remote receiver buffer"
+			default 128
+
+			help
+				pwm port
+
+endif

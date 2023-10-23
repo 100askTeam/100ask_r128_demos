@@ -1,0 +1,67 @@
+menuconfig USE_100ASK_MODULE_DRIVER_SPI_LCD
+	bool "USE USE_100ASK_MODULE_DRIVER_SPI_LCD"
+	default n
+
+if USE_100ASK_MODULE_DRIVER_SPI_LCD
+
+	config 100ASK_MODULE_DRIVER_SPI_LCD_SPI_PORT
+		int "Configure the display screen SPI PORT"
+		default 1
+
+		help
+			0: SPI0, 1: SPI1
+
+	config 100ASK_MODULE_DRIVER_SPI_LCD_FREQUENCY
+		int "Configure the display screen SPI frequency"
+		default 40000000
+
+		help
+			Configure the display SPI frequency here.
+	
+	config 100ASK_MODULE_DRIVER_SPI_LCD_PWM_PORT
+		int "Configure the pwm port(Backlight)"
+		default 6
+
+		help
+			pwm pprt
+		
+choice
+	bool "Select the model of the display"
+	default USE_100ASK_MODULE_DRIVER_SPI_LCD_ST7796S
+	help
+		Default display controller model
+	
+	config USE_100ASK_MODULE_DRIVER_SPI_LCD_ST7796S
+		bool "st7796s"
+		help
+			https://forums.100ask.net
+
+	config USE_100ASK_MODULE_DRIVER_SPI_LCD_ILI9341
+		bool "ili9341"
+		help
+			No yet. https://forums.100ask.net
+
+endchoice
+
+ 	config 100ASK_MODULE_DRIVER_SPI_LCD_ROTATION
+		int "Set display rotation angle"
+		default 0
+
+		help
+			The rotation angles you can choose are: 90, 180, 270.
+
+	config 100ASK_MODULE_DRIVER_SPI_LCD_WIDTH
+		int "Screen width"
+		default 320 if USE_100ASK_MODULE_DRIVER_SPI_LCD_ST7796S
+
+		help
+			Configure the display screen width here.
+
+	config 100ASK_MODULE_DRIVER_SPI_LCD_HEIGHT
+		int "Screen height"
+		default 480 if USE_100ASK_MODULE_DRIVER_SPI_LCD_ST7796S
+
+		help
+			Configure the display screen height here.
+	
+endif

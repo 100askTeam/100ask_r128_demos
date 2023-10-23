@@ -1,0 +1,2 @@
+obj-$(CONFIG_USE_100ASK_MODULE_DRIVER_IIC_OLED) += driver_lcd.o
+obj-$(CONFIG_USE_100ASK_MODULE_DRIVER_IIC_OLED) += driver_oled.o

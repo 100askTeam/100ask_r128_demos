@@ -1,0 +1,47 @@
+menuconfig USE_100ASK_MODULE_DRIVER_IIC_OLED
+	bool "USE USE_100ASK_MODULE_DRIVER_IIC_OLED"
+	default n
+
+if USE_100ASK_MODULE_DRIVER_IIC_OLED
+
+	config USE_100ASK_MODULE_DRIVER_IIC_OLED_PORT
+		int "Configure the iic port"
+		default 1
+
+		help
+			0: IIC0, 1: IIC1
+
+	config USE_100ASK_MODULE_DRIVER_IIC_OLED_ADDR
+		hex "Configure the iic addr"
+		default 0x3c
+
+		help
+			0: IIC0, 1: IIC1
+			
+choice
+	bool "Select the model of the display"
+	default USE_100ASK_MODULE_DRIVER_IIC_OLED_SSD1306
+	help
+		Default display controller model
+	
+	config USE_100ASK_MODULE_DRIVER_IIC_OLED_SSD1306
+		bool "ssd1306"
+		help
+			https://forums.100ask.net
+endchoice
+
+	config USE_100ASK_MODULE_DRIVER_IIC_OLED_WIDTH
+		int "Screen width"
+		default 128 if USE_100ASK_MODULE_DRIVER_IIC_OLED_SSD1306
+
+		help
+			Configure the display screen width here.
+
+	config USE_100ASK_MODULE_DRIVER_IIC_OLED_HEIGHT
+		int "Screen height"
+		default 64 if USE_100ASK_MODULE_DRIVER_IIC_OLED_SSD1306
+
+		help
+			Configure the display screen height here.
+
+endif

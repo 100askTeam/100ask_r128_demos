@@ -1,0 +1,33 @@
+menuconfig USE_100ASK_MODULE_DRIVER_SPI_FLASH
+	bool "USE USE_100ASK_MODULE_DRIVER_SPI_FLASH"
+	default n
+
+if USE_100ASK_MODULE_DRIVER_SPI_FLASH
+
+	config 100ASK_MODULE_DRIVER_SPI_FLASH_PORT
+		int "Configure the SPI PORT"
+		default 1
+
+		help
+			0: SPI0, 1: SPI1
+
+	config 100ASK_MODULE_DRIVER_SPI_FLASH_FREQUENCY
+		int "Configure the SPI frequency"
+		default 18000000
+
+		help
+			Configure the SPI frequency here.
+
+choice
+	bool "Select the flash type"
+	default USE_100ASK_MODULE_DRIVER_SPI_FLASH_W25Q64
+	help
+		Default flash
+	
+	config USE_100ASK_MODULE_DRIVER_SPI_FLASH_W25Q64
+		bool "W25Q64"
+		help
+			https://forums.100ask.net
+endchoice
+
+endif

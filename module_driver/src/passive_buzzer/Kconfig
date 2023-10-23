@@ -1,0 +1,13 @@
+menuconfig USE_100ASK_MODULE_DRIVER_PASSIVE_BUZZER
+	bool "USE USE_100ASK_MODULE_DRIVER_PASSIVE_BUZZER"
+	default n
+
+if USE_100ASK_MODULE_DRIVER_PASSIVE_BUZZER
+
+	config 100ASK_MODULE_DRIVER_PASSIVE_BUZZER_PORT
+		int "Configure the pwm PORT"
+		default 6
+
+		help
+			pwm port
+endif

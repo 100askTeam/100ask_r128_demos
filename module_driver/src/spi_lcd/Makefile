@@ -1,0 +1,1 @@
+obj-$(CONFIG_USE_100ASK_MODULE_DRIVER_SPI_LCD) += lcd_100ask_spi.o

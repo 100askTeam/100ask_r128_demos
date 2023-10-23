@@ -1,0 +1,22 @@
+menuconfig COMPONENTS_100ASK_R128_DEMOS
+	bool "USE 100ask_r128_demos"
+	default n
+
+if COMPONENTS_100ASK_R128_DEMOS
+
+source components/common/thirdparty/100ask_r128_demos/module_driver/Kconfig
+
+config LV_100ASK_DESKTOP
+	bool "100ask lvgl desktop"
+	default n
+		help
+		lvgl examples use lvgl.
+		https://forums.100ask.net
+
+config NWATCH_100ASK
+	bool "NWatch demo"
+	default n
+		help
+		https://forums.100ask.net
+
+endif
