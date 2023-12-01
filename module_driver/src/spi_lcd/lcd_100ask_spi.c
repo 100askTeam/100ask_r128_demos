@@ -72,11 +72,14 @@
 //#define LCD_100ASK_PIN_MISO               -1
 //#define LCD_100ASK_PIN_CLK                -1
 //#define LCD_100ASK_PIN_CS                 -1
-#define LCD_100ASK_PIN_DC                   GPIOA(11)
-#define LCD_100ASK_PIN_RST                  GPIOA(20)
+//#define LCD_100ASK_PIN_DC                   GPIOA(19)
+//#define LCD_100ASK_PIN_RST                  GPIOA(20)
+#define LCD_100ASK_PIN_DC                   GPIOA(4)
+#define LCD_100ASK_PIN_RST                  GPIOA(3)
 
 // PWM
-#define LCD_100ASK_PIN_PWM                  GPIOA(9)
+#define LCD_100ASK_PIN_PWM                  GPIOA(26)
+
 #define LCD_100ASK_PWM_PORT                 CONFIG_100ASK_MODULE_DRIVER_SPI_LCD_PWM_PORT
 
 
@@ -104,25 +107,21 @@ static void lcd_100ask_send_cmd(uint8_t cmd);
 
 void lcd_100ask_spi_init(void)
 {
-    spi_master_status_t ret;
-    hal_spi_master_port_t  port = LCD_100ASK_SPI_PORT;
+    hal_spi_master_status_t ret;
+    int  port = LCD_100ASK_SPI_PORT;
     //hal_spi_master_port_t  port = 1;
     hal_spi_master_config_t cfg;
 
 	/* init spi */
     cfg.clock_frequency = LCD_100ASK_SPI_FREQUENCY;
     //cfg.clock_frequency = 40000000;
-    cfg.slave_port = HAL_SPI_MASTER_SLAVE_0;
-    cfg.cpha = HAL_SPI_MASTER_CLOCK_PHASE0;
-    cfg.cpol = HAL_SPI_MASTER_CLOCK_POLARITY0;
-    cfg.bit_order = HAL_SPI_MASTER_LSB_FIRST;
-    //cfg.sip = 0;
-    //cfg.flash = 0;
+    cfg.chipselect = 0;
+    cfg.mode = 0;
 
     ret = hal_spi_init(port, &cfg);
-    if (ret != SPI_MASTER_OK)
+    if (ret != HAL_SPI_MASTER_OK)
 		printf("init spi master failed - %d\n", ret);
-	ret = hal_spi_hw_config(port, &cfg);
+	// ret = hal_spi_hw_config(port, &cfg);
 
     
     /* pin init */
@@ -239,7 +238,7 @@ static void lcd_100ask_send_para(uint8_t *para, uint32_t len)
 
 static void lcd_100ask_send_data(void *buf, size_t length)
 {
-	spi_master_status_t ret;
+	hal_spi_master_status_t ret;
 	hal_spi_master_transfer_t t;
 
     hal_gpio_set_data(LCD_100ASK_PIN_DC, GPIO_DATA_HIGH);
@@ -255,7 +254,7 @@ static void lcd_100ask_send_data(void *buf, size_t length)
 	t.rx_len = 0;
 	t.tx_nbits = SPI_NBITS_SINGLE;
 
-	ret =  hal_spi_xfer(LCD_100ASK_SPI_PORT, &t);
+	ret =  hal_spi_xfer(LCD_100ASK_SPI_PORT, &t, 1);
 
 #else
     hal_spi_write(LCD_100ASK_SPI_PORT, buf, length);

@@ -158,7 +158,8 @@ static twi_status_t OLED_WriteCmd(uint8_t cmd)
     msg.len   = 2;
     msg.buf   = tmpbuf;
     
-    return hal_twi_control(port, I2C_RDWR, &msg);
+    //return hal_twi_control(port, I2C_RDWR, &msg);
+    return hal_twi_write(port, &msg, 1);
 #else
     return hal_twi_write(g_iic_port, 0, tmpbuf, 2);
 #endif
@@ -186,7 +187,8 @@ static twi_status_t OLED_WriteData(uint8_t data)
     msg.len = 2;
     msg.buf = tmpbuf;
     
-    return hal_twi_control(g_iic_port, I2C_RDWR, &msg);
+    //return hal_twi_control(g_iic_port, I2C_RDWR, &msg);
+    return hal_twi_write(port, &msg, 1);
 #else
     return hal_twi_write(g_iic_port, 0, tmpbuf, 2);
 #endif
@@ -222,9 +224,8 @@ static int OLED_WriteNBytes(uint8_t *buf, uint16_t length)
     msg.len   = write_size;
     msg.buf   = tmpbuf;
 
-    res = hal_twi_control(g_iic_port, I2C_RDWR, &msg);
-    ///res = hal_twi_xfer(g_iic_port, &msg, 1);
-    ///res = hal_twi_write(g_iic_port, 0, tmpbuf, length+1);
+    ///res = hal_twi_control(g_iic_port, I2C_RDWR, &msg);
+    res = hal_twi_write(port, &msg, 1);
 
     free(tmpbuf);
 

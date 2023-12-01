@@ -1,7 +1,7 @@
 #include "lvgl/lvgl.h"
 #include "lv_drivers/display/sunxifb.h"
 #include "lv_drivers/indev/evdev.h"
-#include "lv_100ask_desktop/src/lv_100ask_desktop.h"
+#include "lv_100ask_desktop.h"
 #include <unistd.h>
 #include <pthread.h>
 #include <time.h>
@@ -15,20 +15,8 @@
 #endif
 static int exit_flag = 0;
 
-static void lv_thread_entry(void * param)
-{
-    /*Handle LitlevGL tasks (tickless mode)*/
-    while(1) {
-        lv_task_handler();
-        usleep(5000);
-        if(exit_flag == 1)
-        {
-            exit_flag = 0;
-            break;
-        }
-    }
-    vTaskDelete(NULL);
-}
+
+static void lv_thread_entry(void * param);
 
 
 int lvgl_100ask_dektop_main(int argc, char *argv[])
@@ -102,7 +90,7 @@ int lvgl_100ask_dektop_main(int argc, char *argv[])
             exit_flag = 1;
             sunxifb_free((void**) &buf, "lv_100ask_desktop");
             sunxifb_exit();
-            lv_deinit();
+            ///lv_deinit();
             return 0;
         }
     }
@@ -112,6 +100,22 @@ int lvgl_100ask_dektop_main(int argc, char *argv[])
     return 0;
 }
 
+
+
+static void lv_thread_entry(void * param)
+{
+    /*Handle LitlevGL tasks (tickless mode)*/
+    while(1) {
+        lv_task_handler();
+        usleep(5000);
+        if(exit_flag == 1)
+        {
+            exit_flag = 0;
+            break;
+        }
+    }
+    vTaskDelete(NULL);
+}
 
 /*Set in lv_conf.h as `LV_TICK_CUSTOM_SYS_TIME_EXPR`*/
 uint32_t __attribute__((weak)) custom_tick_get(void) {
