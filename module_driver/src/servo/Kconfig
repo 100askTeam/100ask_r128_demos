@@ -1,0 +1,13 @@
+menuconfig USE_100ASK_MODULE_DRIVER_SERVO
+	bool "USE USE_100ASK_MODULE_DRIVER_SERVO"
+	default n
+
+if USE_100ASK_MODULE_DRIVER_SERVO
+
+	config 100ASK_MODULE_DRIVER_SERVO_PORT
+		int "Configure the pwm PORT"
+		default 0
+
+		help
+			pwm port
+endif

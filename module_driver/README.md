@@ -9,3 +9,5 @@
 |dht11 | [./src/dht11/README.md](./src/dht11/README.md) |
 |spi_flash | [./src/spi_flash/README.md](./src/spi_flash/README.md) |
 |spi_lcd | [./src/spi_lcd/README.md](./src/spi_lcd/README.md) |
+|servo | [./src/servo/README.md](./src/servo/README.md) |
+
