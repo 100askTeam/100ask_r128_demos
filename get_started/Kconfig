@@ -1,0 +1,10 @@
+menuconfig USE_100ASK_GET_STARTED
+	bool "USE USE_100ASK_GET_STARTED"
+	default n
+
+if USE_100ASK_GET_STARTED
+
+source components/common/thirdparty/100ask_r128_demos/get_started/src/hello_world/Kconfig
+source components/common/thirdparty/100ask_r128_demos/get_started/src/blink/Kconfig
+
+endif

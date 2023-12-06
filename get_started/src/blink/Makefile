@@ -1,0 +1,1 @@
+obj-$(CONFIG_USE_100ASK_GET_STARTED_BLINK) += blink.o

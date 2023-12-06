@@ -1,0 +1,4 @@
+PRJ_SRC_DIR = src
+
+obj-$(CONFIG_USE_100ASK_GET_STARTED_HELLO_WORLD) 		+= $(PRJ_SRC_DIR)/hello_world/
+obj-$(CONFIG_USE_100ASK_GET_STARTED_BLINK) 				+= $(PRJ_SRC_DIR)/blink/

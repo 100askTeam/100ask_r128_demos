@@ -4,6 +4,7 @@ menuconfig COMPONENTS_100ASK_R128_DEMOS
 
 if COMPONENTS_100ASK_R128_DEMOS
 
+source components/common/thirdparty/100ask_r128_demos/get_started/Kconfig
 source components/common/thirdparty/100ask_r128_demos/module_driver/Kconfig
 
 config LV_100ASK_DESKTOP
