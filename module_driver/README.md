@@ -10,4 +10,5 @@
 |spi_flash | [./src/spi_flash/README.md](./src/spi_flash/README.md) |
 |spi_lcd | [./src/spi_lcd/README.md](./src/spi_lcd/README.md) |
 |servo | [./src/servo/README.md](./src/servo/README.md) |
+|ws2812 | [./src/ws2812/README.md](./src/ws2812/README.md) |
 

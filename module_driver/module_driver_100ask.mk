@@ -9,3 +9,4 @@ CFLAGS += -I components/common/thirdparty/100ask_r128_demos/module_driver/src/ir
 CFLAGS += -I components/common/thirdparty/100ask_r128_demos/module_driver/src/spi_flash
 CFLAGS += -I components/common/thirdparty/100ask_r128_demos/module_driver/src/dht11
 CFLAGS += -I components/common/thirdparty/100ask_r128_demos/module_driver/src/servo
+CFLAGS += -I components/common/thirdparty/100ask_r128_demos/module_driver/src/ws2812

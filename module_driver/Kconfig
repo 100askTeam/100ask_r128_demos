@@ -12,5 +12,6 @@ source components/common/thirdparty/100ask_r128_demos/module_driver/src/ir_recei
 source components/common/thirdparty/100ask_r128_demos/module_driver/src/spi_flash/Kconfig
 source components/common/thirdparty/100ask_r128_demos/module_driver/src/dht11/Kconfig
 source components/common/thirdparty/100ask_r128_demos/module_driver/src/servo/Kconfig
+source components/common/thirdparty/100ask_r128_demos/module_driver/src/ws2812/Kconfig
 
 endif

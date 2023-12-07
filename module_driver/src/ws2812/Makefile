@@ -1,0 +1,2 @@
+
+obj-$(CONFIG_USE_100ASK_MODULE_DRIVER_WS2812) += driver_ws2812.o
