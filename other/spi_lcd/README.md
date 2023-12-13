@@ -64,13 +64,16 @@ menuconfig具体配置：
 
 ```shell
 
-# 1.打开SPI
+# 1.打开SPI和PWM
 Drivers Options  --->
     soc related device drivers  --->
         SPI Devices   --->
             [*] enable spi driver
             [*]   support sp transfer if crash
             [ ]   enable spi hal APIs test command
+        PWM devices --->
+            [*] enable pwm driver
+            [ ]   enable pwm hal APIs test command
 
 # 2. 打开SPILCD，并打开100ASK相关的配置
 Drivers Options  --->
