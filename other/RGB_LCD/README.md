@@ -212,7 +212,7 @@ lcd_gpio_21              = port:PA21<8><0><3><0>
 
 ### LVGL配置
 
-修改文件：`lichee/rtos-components/thirdparty/littlevgl-8/lv_examples/src/lv_conf.h`
+修改文件：`SDK/lichee/rtos-components/thirdparty/littlevgl-8/lv_examples/src/lv_conf.h`
 
 ```c
 /*Color depth: 1 (1 byte per pixel), 8 (RGB332), 16 (RGB565), 32 (ARGB8888)*/
@@ -269,7 +269,7 @@ tp_twi_id              = 1
 
 ### LVGL配置
 
-修改文件：`lichee/rtos-components/thirdparty/littlevgl-8/lv_examples/src/lv_drv_conf.h`
+修改文件：`SDK/lichee/rtos-components/thirdparty/littlevgl-8/lv_examples/src/lv_drv_conf.h`
 
 ```c
 /*-------------------------------------------------
@@ -279,3 +279,18 @@ tp_twi_id              = 1
 #  define USE_EVDEV           1
 #endif
 ```
+
+
+## 结果
+
+以上配置完成后，编译打包烧录，上电后屏幕背光亮起，屏幕为黑色。
+
+并且可以在 LOG 中看到 `[LCD_FB] lcd_fb_probe,line:103:` 和 `spi_clk_init()1609 [spi1] clk rate auto adjust to 48000000` SPI 初始化的 LOG。
+
+```shell
+
+```
+
+通过执行 **lv_examples** 命令运行LVGL测试demo。
+
+`lv_examples` 代码位于： `SDK/lichee/rtos-components/thirdparty/littlevgl-8/lv_examples/src/lv_main.c`

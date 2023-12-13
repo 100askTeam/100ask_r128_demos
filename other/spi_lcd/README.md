@@ -1,5 +1,18 @@
 # R128使用SPI LCD
 
+R128 平台提供了 SPI DBI 的 SPI TFT 接口，具有如下特点：
+
+- Supports DBI Type C 3 Line/4 Line Interface Mode
+- Supports 2 Data Lane Interface Mode
+- Supports data source from CPU or DMA
+- Supports RGB111/444/565/666/888 video format
+- Maximum resolution of RGB666 240 x 320@30Hz with single data lane
+- Maximum resolution of RGB888 240 x 320@60Hz or 320 x 480@30Hz with dual data lane
+- Supports tearing effect
+- Supports software flexible control video frame rate
+
+同时，提供了SPILCD驱动框架以供 SPI 屏幕使用。
+
 这里的示例以百问网的SPI LCD为例。
 
 ## 接线
@@ -316,7 +329,7 @@ lcd_spi_dc_pin      = port:PA04<1><0><3><0>
 
 ### 修改lv_conf.h
 
-修改文件：`lichee/rtos-components/thirdparty/littlevgl-8/lv_examples/src/lv_conf.h`
+修改文件：`SDK/lichee/rtos-components/thirdparty/littlevgl-8/lv_examples/src/lv_conf.h`
 
 ```c
 /*====================
@@ -332,7 +345,7 @@ lcd_spi_dc_pin      = port:PA04<1><0><3><0>
 
 ### 修改lv_main.c
 
-修改文件：`lichee/rtos-components/thirdparty/littlevgl-8/lv_examples/src/lv_main.c`
+修改文件：`SDK/lichee/rtos-components/thirdparty/littlevgl-8/lv_examples/src/lv_main.c`
 
 添加屏幕旋转处理：
 
@@ -361,3 +374,29 @@ lcd_spi_dc_pin      = port:PA04<1><0><3><0>
     lv_disp_drv_register(&disp_drv);
 ```
 
+
+## 结果
+
+以上配置完成后，编译打包烧录，上电后屏幕背光亮起，屏幕为黑色。
+
+![](http://photos.100ask.net/aw-r128-docs/rtos/demo/part1/chapter9/image12.png)
+
+并且可以在 LOG 中看到 `[LCD_FB] lcd_fb_probe,line:103:` 和 `spi_clk_init()1609 [spi1] clk rate auto adjust to 48000000` SPI 初始化的 LOG。
+
+![](http://photos.100ask.net/aw-r128-docs/rtos/demo/part1/chapter9/image13.png)
+
+然后可以用 `test_spilcd` 测试屏幕，日志如下
+
+![](http://photos.100ask.net/aw-r128-docs/rtos/demo/part1/chapter9/image14.png)
+
+执行命令之后屏幕会变为黄色。
+
+- SPI 屏幕颜色说明：<[SPI LCD 显示驱动 - SPI LCD 颜色相关问题](https://aw-r128.100ask.net/zh/rtos/developer-guide/part1/chapter5.html#faq)>
+
+![](http://photos.100ask.net/aw-r128-docs/rtos/demo/part1/chapter9/image15.png)
+
+`test_spilcd` 代码位于： `SDK/lichee/rtos-hal/hal/test/spilcd/test_spilcd.c`
+
+也可以通过执行 **lv_examples** 命令运行LVGL测试demo。
+
+`lv_examples` 代码位于： `SDK/lichee/rtos-components/thirdparty/littlevgl-8/lv_examples/src/lv_main.c`
