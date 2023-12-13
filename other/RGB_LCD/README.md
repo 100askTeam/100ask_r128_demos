@@ -288,7 +288,12 @@ tp_twi_id              = 1
 并且可以在 LOG 中看到 `[LCD_FB] lcd_fb_probe,line:103:` 和 `spi_clk_init()1609 [spi1] clk rate auto adjust to 48000000` SPI 初始化的 LOG。
 
 ```shell
-
+disp:[disp_device_attached_and_enable 230]attached ok, mgr0<-->dev0
+disp:[disp_device_attached_and_enable 243]type:1,mode:0,fmt:rgb,bits:8bits,eotf:4,cs:0 dvi_hdmi:2, range:2 scan:0 ratio:8
+[gt911][log] PRODUCT_ID=39:31:31:00:60:10
+[gt911][log] verison=00 range_x=0 range_y=0 point_num=0
+[gt911][log] PRODUCT_ID=39:31:31:00:60:10
+[gt911][log] verison=42 range_x=480 range_y=480 point_num=5
 ```
 
 通过执行 **lv_examples** 命令运行LVGL测试demo。
