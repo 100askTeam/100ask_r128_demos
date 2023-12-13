@@ -1,0 +1,64 @@
+config LCD_SUPPORT_KLD2844B
+	bool "LCD support kld2844B panel"
+	default n
+	---help---
+		If you want to support kld2844b panel for display driver, select it.
+
+config LCD_SUPPORT_KLD35512
+	bool "LCD support kld35512 panel"
+    default n
+    ---help---
+		If you want to support kld35512 panel for display driver, select it.
+
+config LCD_SUPPORT_KLD39501
+	bool "LCD support kld39501 panel"
+	default n
+	---help---
+		If you want to support kld39501 panel for display driver, select it.
+
+config LCD_SUPPORT_NV3029S
+	bool "LCD support nv3029s panel"
+	default n
+	---help---
+		If you want to support nv3029s panel for display driver, select it.
+
+config LCD_SUPPORT_JLT35031C
+	bool "LCD support JLT35031C panel"
+	default n
+	---help---
+		If you want to support JLT35031C panel for display driver, select it.
+
+
+menu "100ASK LCD configure"
+	depends on LCD_100ASK_SUPPORT
+
+	config LCD_SUPPORT_100ASK
+		bool "LCD support 100ask panel"
+		default y
+		---help---
+			If you want to support 100ask panel for display driver, select it.
+
+	choice
+		bool "Select the model of the display"
+		default USE_100ASK_DISPLAY_SCREEN_320X480
+		help
+			Default display controller model
+		
+		config USE_100ASK_DISPLAY_SCREEN_240X240
+			bool "240X240"
+			help
+				https://forums.100ask.net
+
+		config USE_100ASK_DISPLAY_SCREEN_320X480
+			bool "320X480"
+			help
+				https://forums.100ask.net
+	endchoice
+
+	config DISPLAY_SCREEN_100ASK_ROTATION
+		int "Set display rotation angle (90, 180, 270)"
+		default 0
+
+		help
+			The rotation angles you can choose are: 90, 180, 270.
+endmenu
