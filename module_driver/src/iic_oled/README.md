@@ -10,14 +10,18 @@ sys_config.fex:
 
 sys_config.fex:
 
+```shell
 [twi1]
 twi1_sck        = port:PB00<3><1><default><default>
 twi1_sda        = port:PB01<3><1><default><default>
+```
 
 menuconfig:
 
+```shell
 Drivers Options  --->
     soc related device drivers  --->
         TWI Devices  --->
             -*- enable twi driver
             [ ]   enable twi hal APIs test command
+```

@@ -1,3 +1,5 @@
+
+```shell
 [spi1]
 spi1_used       = 1
 spi1_cs_number  = 1
@@ -14,3 +16,5 @@ spi1_miso       = port:PA21<6><0><3><default>
 [pwm6]
 pwm_used        = 1
 pwm_positive    = port:PA26<4><0><2><default>
+
+```

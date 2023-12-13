@@ -1,9 +1,12 @@
 GPIO:
 
+```shell
 IR_RECEIVER_PIN   -------   GPIOA(10)
+```
 
 menuconfig:
 
+```shell
 Drivers Options  --->
     soc related device drivers  --->
             GPIO devices --->
@@ -11,3 +14,4 @@ Drivers Options  --->
                 [ ]   enable gpio hal APIs test command
                 [ ] enable gpio chip aw9523
                 [*] enable amp gpio irq
+```
