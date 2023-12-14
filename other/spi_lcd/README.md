@@ -15,6 +15,11 @@ R128 平台提供了 SPI DBI 的 SPI TFT 接口，具有如下特点：
 
 这里的示例以百问网的SPI LCD为例。
 
+屏幕获取：
+
+- [https://item.taobao.com/item.htm?id=736154682975](https://item.taobao.com/item.htm?id=736154682975)
+- 或[https://item.taobao.com/item.htm?&id=707079371679](https://item.taobao.com/item.htm?&id=707079371679)
+
 ## 接线
 
 | LCD Pin | R128 Pin |
@@ -351,7 +356,7 @@ lcd_spi_dc_pin      = port:PA04<1><0><3><0>
 
 ```c
     printf("sunxifb_get_sizes width:%d, height:%d, width * height * sizeof(lv_color_t):%d\n", width, height, width * height * sizeof(lv_color_t));
-    
+
     /*Initialize and register a display driver*/
     static lv_disp_drv_t disp_drv;
     lv_disp_drv_init(&disp_drv);
