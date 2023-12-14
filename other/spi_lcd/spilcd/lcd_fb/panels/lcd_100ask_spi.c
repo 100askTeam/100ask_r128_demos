@@ -409,10 +409,6 @@ static void lcd_init_320x480(unsigned int sel, lcd_display_rotation_t rotation)
     //Exit Sleep
     sunxi_lcd_cmd_write(sel, 0x11);
     sunxi_lcd_delay_ms(120);
-    
-    // PROTATION 90
-    sunxi_lcd_cmd_write(sel, 0x36);
-    sunxi_lcd_para_write(sel, 0xe8);
 
 	lcd_dev_xoffset = 0;
 	lcd_dev_yoffset = 0;

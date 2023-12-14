@@ -350,7 +350,9 @@ lcd_spi_dc_pin      = port:PA04<1><0><3><0>
 添加屏幕旋转处理：
 
 ```c
-/*Initialize and register a display driver*/
+    printf("sunxifb_get_sizes width:%d, height:%d, width * height * sizeof(lv_color_t):%d\n", width, height, width * height * sizeof(lv_color_t));
+    
+    /*Initialize and register a display driver*/
     static lv_disp_drv_t disp_drv;
     lv_disp_drv_init(&disp_drv);
     disp_drv.draw_buf   = &disp_buf;
